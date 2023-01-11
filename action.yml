@@ -1,0 +1,18 @@
+name: 'action test'
+description: 'Grabbing environment and secrets for a custom action script'
+author: 'ohookins'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - id: get_last_commit_hash
+      shell: bash
+      run: |
+        echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}
+    - id: get_a_secret
+      shell: bash
+      run: |
+        echo "MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }}" >> ${GITHBUB_ENV}
+    - id: script
+      run: $GITHUB_ACTION_PATH/action.sh
+      shell: bash
