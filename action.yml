@@ -25,4 +25,5 @@ runs:
       run: $GITHUB_ACTION_PATH/action2.sh
       env:
         test-output-1: ${{ steps.script1.outputs.test_output_1 }}
+        animal: ${{ inputs.animal }}
       shell: bash
