@@ -19,3 +19,4 @@ runs:
       shell: bash
     - id: script2
       run: $GITHUB_ACTION_PATH/action2.sh
+      shell: bash
