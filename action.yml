@@ -3,7 +3,7 @@ description: 'Grabbing environment and secrets for a custom action script'
 author: 'ohookins'
 
 inputs:
-  animal:
+  type-of-animal:
     required: true
 
 outputs:
@@ -23,9 +23,9 @@ runs:
       shell: bash
     - shell: bash
       run: |
-        echo "${{ inputs.animal }}"
+        echo "${{ inputs.type-of-animal }}"
     - id: script2
-      if: ${{ inputs.animal != '' }}
+      if: ${{ inputs.type-of-animal != '' }}
       run: $GITHUB_ACTION_PATH/action2.sh
       env:
         test-output-1: ${{ steps.script1.outputs.test_output_1 }}
