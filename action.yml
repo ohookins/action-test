@@ -21,7 +21,11 @@ runs:
     - id: script1
       run: $GITHUB_ACTION_PATH/action1.sh
       shell: bash
+    - shell:bash
+      run: |
+        echo "${{ inputs.animal }}"
     - id: script2
+      if: ${{ inputs.animal != '' }}
       run: $GITHUB_ACTION_PATH/action2.sh
       env:
         test-output-1: ${{ steps.script1.outputs.test_output_1 }}
