@@ -2,6 +2,10 @@ name: 'action test'
 description: 'Grabbing environment and secrets for a custom action script'
 author: 'ohookins'
 
+inputs:
+  animal:
+    required: true
+
 outputs:
   greeting:
     value: ${{ steps.script1.outputs.test_output_1 }}
