@@ -1,6 +1,11 @@
 name: 'action test'
 description: 'Grabbing environment and secrets for a custom action script'
 author: 'ohookins'
+
+outputs:
+  greeting:
+    value: ${{ steps.script1.outputs.test_output_1 }}
+
 runs:
   using: 'composite'
   steps:
@@ -9,8 +14,8 @@ runs:
       shell: bash
       run: |
         echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}
-    - id: script
-      run: $GITHUB_ACTION_PATH/action.sh
+    - id: script1
+      run: $GITHUB_ACTION_PATH/action1.sh
       shell: bash
-      env:
-        MY_TEST_SECRET: ${{ secrets.MY_TEST_SECRET }}
+    - id: script2
+      run: $GITHUB_ACTION_PATH/action2.sh
