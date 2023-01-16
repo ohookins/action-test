@@ -19,4 +19,6 @@ runs:
       shell: bash
     - id: script2
       run: $GITHUB_ACTION_PATH/action2.sh
+      with:
+	test-output-1: ${{ steps.script1.outputs.test_output_1 }}
       shell: bash
